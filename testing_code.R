@@ -53,4 +53,29 @@ ggplot(data=data, aes(values)) +
 # Graphs are good
 # Now, summary stats
 
+aov(values ~ trt, data)
 
+sum_of_squares<-function(data){
+  sum( (data-mean(data))^2 )
+}
+
+sum((data$values-mean(data$values))^2)
+sum_of_squares(data$values)
+
+
+sse_1<-ddply(data, "trt", summarise, SSE=sum_of_squares(values))
+sse<-sum(sse_1$SSE)
+
+means<-ddply(data, "trt", summarise, values=mean(values))
+sum_of_squares(means$values)
+
+
+
+dt_trt<-nlevels(data$trt)-1
+dt_e<-
+
+# Break this out into a full data frame instead
+# a bunch of merges I guess  
+  
+  
+  
