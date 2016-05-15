@@ -72,10 +72,21 @@ sum_of_squares(means$values)
 
 
 dt_trt<-nlevels(data$trt)-1
-dt_e<-
+dt_e<-fds
 
-# Break this out into a full data frame instead
-# a bunch of merges I guess  
-  
-  
-  
+# Backup, get this instead
+
+trt1<-rnorm(30)
+trt1<-(trt1-mean(trt1))/sd(trt1)
+trt1<-trt1*2.5+5
+trt2<-rnorm(30)
+trt2<-(trt2-mean(trt2))/sd(trt2)
+trt2<-trt2*2.5+0
+trt3<-rnorm(30)
+trt3<-(trt3-mean(trt3))/sd(trt3)
+trt3<-trt3*2.5-5
+
+data<-data.frame(trt=c(rep(1,30),rep(2,30),rep(3,30)),
+                 values=c(trt1,trt2,trt3))
+#data
+aov(values ~ trt, data)
