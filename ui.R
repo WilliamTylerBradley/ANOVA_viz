@@ -7,16 +7,31 @@ shinyUI(fluidPage(
     
     helpText("This section will discuss ANOVA"),
     
-    
-    
     sidebarLayout(
       sidebarPanel(
-        helpText("This will have the inputs section.")
+        helpText("This will have the inputs section."),
+        
+         sliderInput(inputId = "overall_sd", 
+                     label = "Standard Deviation",
+                     min = 1,
+                     max = 5,
+                     value = 2.5,
+                     step=.1)
       ),
           
       mainPanel(
-        helpText("This will have the graphs"),        
-        helpText("This will have the table")
+        helpText("This will have the graphs"), 
+        
+        plotOutput("plot"),
+        
+        helpText("This will have the table"),
+        
+        tableOutput('anova_table'),
+        
+        textOutput("text")
+        
+
+        
       )
     ),
     
